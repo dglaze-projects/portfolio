@@ -310,6 +310,44 @@ a:hover {
   }
 }
 
+/* Key figures under a section's narrative. Author as raw HTML:
+   <ul class="metrics"><li><span class="metrics__value">40%</span>
+   <span class="metrics__label">…</span></li></ul>
+   Display numerals sit lighter than the section headline so they
+   support it rather than compete; a hairline rule ties them to
+   the text above. */
+.prose--article .metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-block-start: var(--space-6);
+  padding: var(--space-5) 0 0;
+  border-block-start: var(--border-thin) solid var(--color-border-divider);
+  list-style: none;
+}
+
+.prose--article .metrics li + li {
+  margin-block-start: 0;
+}
+
+.prose--article .metrics__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+}
+
+.prose--article .metrics__label {
+  display: block;
+  margin-block-start: var(--space-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
 /* In-column video (e.g. app screen recordings) — no lightbox.
    Portrait recordings are constrained so they don't tower over
    the text; landscape ones span the column. */
