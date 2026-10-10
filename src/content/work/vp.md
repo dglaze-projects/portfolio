@@ -34,6 +34,14 @@ Virgin Pulse's Homebase for Health (HB4H) initiative aimed to transform its B2B2
 
 Two challenges emerged: how to create a seamless and flexible user experience for diverse offerings while retaining user engagement and usability, and how to allow clients (employers) to configure their instance of the platform to their needs while maintaining design cohesion.
 
+## Leadership
+
+### Bringing teams together around a shared strategy
+
+As Director of Product Design & Research, I led an organization of more than 20 designers, researchers, and data scientists, including managers. The team had previously operated across separate product areas, with different practices, priorities, and approaches to solving customer problems.
+
+I brought these disciplines together around a shared experience strategy, established consistent research and design practices, and improved collaboration with Product and Engineering. These changes reduced time to market by 40% and helped us approach complex platform challenges as a connected system rather than a collection of individual features.
+
 ## Approach
 
 ### Design for configuration, not pages
