@@ -36,6 +36,9 @@ const eyebrowLabel = category ? `${client} · ${category}` : client;
 
 /* Role activities: use dedicated field, fall back to skills */
 const roleList = roleActivities.length > 0 ? roleActivities : skills;
+
+/* Role card without a team card sits beside the description */
+const roleAside = roleList.length > 0 && team.length === 0;
 ---
 
 <BaseLayout title={`${client}: ${title}`} description={tagline} theme="gradient">
@@ -46,51 +49,53 @@ const roleList = roleActivities.length > 0 ? roleActivities : skills;
     </nav>
 
     <!-- Hero -->
-    <header class="container case-hero">
+    <header class:list={['container', 'case-hero', { 'case-hero--aside': roleAside }]}>
       <p class="eyebrow">{eyebrowLabel}</p>
       <h1 class="case-hero__title">{title}</h1>
-      {(description || tagline) && (
-        <p class="case-hero__description">{description || tagline}</p>
-      )}
+      <div class="case-hero__body">
+        {(description || tagline) && (
+          <p class="case-hero__description">{description || tagline}</p>
+        )}
 
-      <!-- Meta grid -->
-      {(roleList.length > 0 || team.length > 0) && (
-        <div class="case-meta-grid">
-          {roleList.length > 0 && (
-            <div class="meta-card">
-              <p class="meta-card__label">My role</p>
-              {roleSummary ? (
-                <div class="meta-card__role">
-                  <p class="meta-card__role-title">{role}</p>
-                  <p class="meta-card__role-summary">{roleSummary}</p>
-                  <p class="meta-card__role-focus">
-                    {roleList.map((item, i) => (
-                      <>{i > 0 && ' · '}<span class="meta-card__role-focus-item">{item}</span></>
+        <!-- Meta grid -->
+        {(roleList.length > 0 || team.length > 0) && (
+          <div class="case-meta-grid">
+            {roleList.length > 0 && (
+              <div class="meta-card">
+                <p class="meta-card__label">My role</p>
+                {roleSummary ? (
+                  <div class="meta-card__role">
+                    <p class="meta-card__role-title">{role}</p>
+                    <p class="meta-card__role-summary">{roleSummary}</p>
+                    <p class="meta-card__role-focus">
+                      {roleList.map((item, i) => (
+                        <>{i > 0 && ' '}<span class="meta-card__role-focus-item">{i > 0 && '· '}{item}</span></>
+                      ))}
+                    </p>
+                  </div>
+                ) : (
+                  <ul class="meta-card__list">
+                    <li class="meta-card__list-item meta-card__list-item--lead">{role}</li>
+                    {roleList.map((item) => (
+                      <li class="meta-card__list-item">{item}</li>
                     ))}
-                  </p>
-                </div>
-              ) : (
+                  </ul>
+                )}
+              </div>
+            )}
+            {team.length > 0 && (
+              <div class="meta-card">
+                <p class="meta-card__label">The team</p>
                 <ul class="meta-card__list">
-                  <li class="meta-card__list-item meta-card__list-item--lead">{role}</li>
-                  {roleList.map((item) => (
-                    <li class="meta-card__list-item">{item}</li>
+                  {team.map((member) => (
+                    <li class="meta-card__list-item">{member}</li>
                   ))}
                 </ul>
-              )}
-            </div>
-          )}
-          {team.length > 0 && (
-            <div class="meta-card">
-              <p class="meta-card__label">The team</p>
-              <ul class="meta-card__list">
-                {team.map((member) => (
-                  <li class="meta-card__list-item">{member}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       <!-- Fallback: simple role/skills display when no structured data -->
       {roleList.length === 0 && team.length === 0 && (
@@ -200,6 +205,27 @@ const roleList = roleActivities.length > 0 ? roleActivities : skills;
     max-width: 62ch;
   }
 
+  /* Role card beside the description (no team card). Starts at 960px, not 821px,
+     so the description keeps ~45+ characters per line beside the card */
+  @media (min-width: 960px) {
+    .case-hero--aside .case-hero__body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 22rem;
+      align-items: start;
+      column-gap: var(--space-7);
+      margin-block-start: var(--space-6);
+    }
+
+    .case-hero--aside .case-hero__description,
+    .case-hero--aside .case-meta-grid {
+      margin-block-start: 0;
+    }
+
+    .case-hero--aside .case-meta-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* ---- Meta grid (role + team cards) ---- */
   .case-meta-grid {
     display: grid;
@@ -267,7 +293,7 @@ const roleList = roleActivities.length > 0 ? roleActivities : skills;
     color: var(--color-text-secondary);
   }
 
-  /* Keep each focus area intact; wrap only between items */
+  /* Keep each focus area (with its leading separator) intact; wrap only between items */
   .meta-card__role-focus-item {
     white-space: nowrap;
   }
