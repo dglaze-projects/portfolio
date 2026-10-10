@@ -46,13 +46,13 @@ I brought these disciplines together around a shared experience strategy, establ
 
 ### Design for configuration, not pages
 
-**Research-driven insights** — Conducted surveys with over 200 members and performed stack ranking exercises to identify priority features for both clients and end users. This was complemented by usability testing, card sorting, and preference testing to ensure designs met diverse user needs.
+**Start with the member experience.** Research with more than 200 members and stakeholder interviews helped us distinguish the needs of individual members from the configuration requirements of employer clients.
 
-**Modular design strategy** — Developed a flexible, modular design strategy that allowed the platform to adapt to custom configurations while maintaining visual and functional coherence. This strategy ensured scalability and reduced the risk of design inconsistencies.
+**Create a flexible system.** Rather than designing separate experiences for each employer offering, we developed a modular strategy that allowed the platform to adapt to different configurations while maintaining a consistent experience.
 
-**Concept validation** — Created and tested multiple design concepts, focusing on features like rewards, daily tasks, and company announcements. Findings showed that integrating rewardable actions with company announcements resonated with both employees and clients.
+**Validate the interaction model.** We explored multiple concepts for navigation, daily tasks, and company announcements, testing the underlying structure before refining individual features.
 
-**Iterative prototyping** — Led the team in prototyping, testing, and refining the core features, ensuring they addressed user needs and aligned with client goals.
+**Refine through iteration.** Working closely with Product and Engineering, we used prototypes and customer feedback to establish a cohesive experience across digital touchpoints.
 
 ![Platform UX strategy: design for configuration, upstream client and downstream member experience, and a systems thinking mindset](../../assets/work/vp/VP-modStrat.png)
 
