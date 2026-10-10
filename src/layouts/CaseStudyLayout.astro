@@ -18,6 +18,7 @@ const {
   category,
   role,
   roleActivities,
+  roleSummary,
   skills,
   team,
   cover,
@@ -58,12 +59,24 @@ const roleList = roleActivities.length > 0 ? roleActivities : skills;
           {roleList.length > 0 && (
             <div class="meta-card">
               <p class="meta-card__label">My role</p>
-              <ul class="meta-card__list">
-                <li class="meta-card__list-item meta-card__list-item--lead">{role}</li>
-                {roleList.map((item) => (
-                  <li class="meta-card__list-item">{item}</li>
-                ))}
-              </ul>
+              {roleSummary ? (
+                <div class="meta-card__role">
+                  <p class="meta-card__role-title">{role}</p>
+                  <p class="meta-card__role-summary">{roleSummary}</p>
+                  <p class="meta-card__role-focus">
+                    {roleList.map((item, i) => (
+                      <>{i > 0 && ' · '}<span class="meta-card__role-focus-item">{item}</span></>
+                    ))}
+                  </p>
+                </div>
+              ) : (
+                <ul class="meta-card__list">
+                  <li class="meta-card__list-item meta-card__list-item--lead">{role}</li>
+                  {roleList.map((item) => (
+                    <li class="meta-card__list-item">{item}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
           {team.length > 0 && (
@@ -227,6 +240,36 @@ const roleList = roleActivities.length > 0 ? roleActivities : skills;
   .meta-card__list-item--lead {
     font-weight: var(--weight-semibold);
     color: var(--color-text);
+  }
+
+  /* Role summary format (used when roleSummary is set) */
+  .meta-card__role {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .meta-card__role-title {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-regular);
+    color: var(--color-text);
+  }
+
+  .meta-card__role-summary {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+  }
+
+  .meta-card__role-focus {
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+  }
+
+  /* Keep each focus area intact; wrap only between items */
+  .meta-card__role-focus-item {
+    white-space: nowrap;
   }
 
   /* ---- Simple meta fallback ---- */

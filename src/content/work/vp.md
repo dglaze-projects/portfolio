@@ -3,12 +3,13 @@ title: 'Modular, scalable platform strategy'
 tagline: "Transforming Virgin Pulse's B2B2C wellness platform into a comprehensive, configurable health management solution. Modular architecture, a FHIR-based data model, and third-party integrations."
 description: "Virgin Pulse's Homebase for Health (HB4H) initiative aimed to transform its B2B2C wellness platform into a comprehensive health management solution spanning Wellness, Condition Management, Benefits Navigation, and Health Analytics. I directed the design strategy that made one platform work for all of it."
 client: 'Virgin Pulse'
-role: 'UX Director'
+role: 'Director, Product Design & Research'
+roleSummary: 'Led a multidisciplinary organization of 20+ designers, researchers, and data scientists, including managers.'
 roleActivities:
   - Design strategy
-  - Conceptual design
-  - User research
-  - Service design blueprint
+  - Product vision
+  - Research leadership
+  - Cross-functional collaboration
 skills:
   - Design strategy
   - Conceptual design
