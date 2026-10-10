@@ -38,9 +38,11 @@ Two challenges emerged: how to create a seamless and flexible user experience fo
 
 ### Bringing teams together around a shared strategy
 
-As Director of Product Design & Research, I led an organization of more than 20 designers, researchers, and data scientists, including managers. The team had previously operated across separate product areas, with different practices, priorities, and approaches to solving customer problems.
+As Director of Product Design & Research, I led an organization of more than 20 designers, researchers, and data scientists, including managers.
 
-I brought these disciplines together around a shared experience strategy, established consistent research and design practices, and improved collaboration with Product and Engineering. These changes reduced time to market by 40% and helped us approach complex platform challenges as a connected system rather than a collection of individual features.
+To support a growing platform, I introduced a modular design strategy and integrated it into our design system. I secured funding for a dedicated design systems team and hired a frontend engineer to bridge design and engineering, helping ensure shared patterns could be implemented consistently across products.
+
+This approach improved collaboration, reduced duplicated effort, and contributed to a 40% reduction in time to market.
 
 ## Approach
 
