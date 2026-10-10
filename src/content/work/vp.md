@@ -70,8 +70,12 @@ I brought these disciplines together around a shared experience strategy, establ
 
 ## Service design blueprint
 
-### Health Continuum: a patient-centered data model
+### Health Continuum: connecting experiences through data
 
-To ground the platform in real member journeys, I created a service design blueprint following a member from life before diagnosis through management and back to normal blood sugar levels — mapping member and client actions, backstage systems, actors, and the FHIR-based health data flowing underneath each stage.
+As Virgin Pulse expanded beyond wellness into health and condition management, we needed a more patient-centered approach to integrating health information into the platform.
+
+Engineering was working through how to architect a data model that could map health information using FHIR. A Product Director asked me to help clarify the requirements from a member experience perspective.
+
+I created a service design blueprint mapping the member journey, the information needed at each stage, and the relationships between data and experiences. This gave engineering a shared view of the requirements and helped inform the platform's data architecture.
 
 ![Health Continuum service design blueprint: member and client journeys mapped against backstage systems, actors, and FHIR health data types](../../assets/work/vp/VP-Health-Continuum-PCDM-Blueprint-1.jpg)
