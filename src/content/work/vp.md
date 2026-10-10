@@ -68,6 +68,8 @@ I brought these disciplines together around a shared experience strategy, establ
 
 ![The Homebase for Health front-door experience across desktop and mobile, with daily actions, rewards, and personalized content](../../assets/work/vp/VP-HB4H.png)
 
+By making modular design part of our shared design system and establishing a dedicated team to maintain it, we created a more consistent, scalable approach to product development. This contributed to a 40% reduction in time to market while supporting the platform's expanding range of health and wellbeing services.
+
 ## Service design blueprint
 
 ### Health Continuum: connecting experiences through data
