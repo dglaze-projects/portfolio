@@ -33,6 +33,8 @@ const work = defineCollection({
     description: z.string().optional(),
     /** Role activities listed in the meta card (falls back to skills) */
     roleActivities: z.array(z.string()).default([]),
+    /** Summary paragraph under the role title; when set, activities render inline */
+    roleSummary: z.string().optional(),
     /** Team members listed in the meta card */
     team: z.array(z.string()).default([]),
 
