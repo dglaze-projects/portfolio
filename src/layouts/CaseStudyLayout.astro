@@ -5,7 +5,7 @@ import PortfolioFooter from '../components/PortfolioFooter.astro';
 import '@fontsource-variable/inter';
 import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
-interface Props { entry: CollectionEntry<'work'> }
+interface Props { entry: CollectionEntry<'work'>; noindex?: boolean; hideRole?: boolean; hideNext?: boolean; pageTitle?: string }
 const { entry } = Astro.props;
 const d = entry.data;
 const projects = (await getCollection('work', ({data}) => !data.draft)).sort((a,b) => a.data.order-b.data.order);
@@ -14,7 +14,7 @@ const activities = d.roleActivities.length ? d.roleActivities : d.skills;
 ---
 <!doctype html>
 <html lang="en">
-<PageHead title={`${d.client}: ${d.title} — Deanna Glaze`} description={d.tagline} />
+<PageHead title={Astro.props.pageTitle || `${d.client}: ${d.title} — Deanna Glaze`} description={d.tagline} noindex={Astro.props.noindex} />
 <body><a class="skip" href="#main">Skip to case study</a><div class="page">
 <PortfolioHeader active="work" />
 <main id="main">
@@ -23,13 +23,13 @@ const activities = d.roleActivities.length ? d.roleActivities : d.skills;
 <a class="back" href="/work">← All work</a>
 <div class="overview"><p class="eyebrow">{[d.client, d.category].filter(Boolean).join(" · ")}</p><h1>{d.title}</h1></div>
 <div class="intro-summary"><p class="description">{d.description || d.tagline}</p>
-<div class="details"><section><h2 class="eyebrow">My role</h2><p>{d.role}</p>{d.roleSummary && <p>{d.roleSummary}</p>}{activities.map(item=><p>{item}</p>)}</section></div>
+{!Astro.props.hideRole && <div class="details"><section><h2 class="eyebrow">My role</h2><p>{d.role}</p>{d.roleSummary && <p>{d.roleSummary}</p>}{activities.map(item=><p>{item}</p>)}</section></div>}
 </div>
 </div>
 {d.cover && <Image class="cover" src={d.cover} alt={d.coverAlt || ''} widths={[768,1312,1968]} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1200px) calc(100vw - 80px), 1312px" loading="eager"/>}
 <div class:list={['case-body', {'lotic':entry.id==='lotic'}]}><slot/></div>
 </article>
-{next && next.id!==entry.id && <a class="next-project" href={`/work/${next.id}`}><div><p class="eyebrow">Next project</p><p class="next-title">{`${next.data.client} — ${next.data.shortTitle || next.data.title}`}</p></div><span aria-hidden="true">→</span></a>}
+{!Astro.props.hideNext && next && next.id!==entry.id && <a class="next-project" href={`/work/${next.id}`}><div><p class="eyebrow">Next project</p><p class="next-title">{`${next.data.client} — ${next.data.shortTitle || next.data.title}`}</p></div><span aria-hidden="true">→</span></a>}
 </main>
 <PortfolioFooter />
 </div></body></html>

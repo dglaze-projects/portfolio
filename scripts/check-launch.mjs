@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { transformSync } from 'esbuild';
 const output='.vercel/output/static';
 const pages=[];
+const serverRoutes=JSON.parse(readFileSync('.vercel/output/config.json','utf8')).routes.filter(r=>r.dest==='_render').map(r=>new RegExp(r.src));
 function walk(dir){for(const entry of readdirSync(dir,{withFileTypes:true})){const p=join(dir,entry.name);if(entry.isDirectory())walk(p);else if(p.endsWith('.html'))pages.push(p)}}
 walk(output);
 for(const file of pages){
@@ -13,7 +14,7 @@ for(const file of pages){
  assert(html.includes('property="og:title"'),`${file}: sharing title missing`);
  if(!/\/(404|contact\/(thanks|error))(?:\/index)?\.html$/.test(file)) assert(!html.includes('noindex'),`${file}: accidental noindex`);
  for(const [,url] of html.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)){
-  if(url.startsWith('/_image'))continue;
+  if(url.startsWith('/_image') || serverRoutes.some(route=>route.test(url)))continue;
   const path=decodeURIComponent(url);
   assert([join(output,path),join(output,path+'.html'),join(output,path,'index.html')].some(existsSync),`${file}: missing ${url}`);
  }

@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { COOKIE, authorized, configured, privateHeaders } from '../../lib/redshift-auth';
+export const prerender = false;
+Object.entries(privateHeaders).forEach(([key,value])=>Astro.response.headers.set(key,value));
+const unlocked = authorized(Astro.cookies.get(COOKIE)?.value);
+const available = configured();
+const error = Astro.url.searchParams.has('error');
+const entry = {
+  id:'redshift-bio', collection:'work', data: {
+    title:'An intuitive experience for complex science.',
+    client:'Redshift Bio', category:'Life sciences',
+    tagline:'Experience design for a life sciences platform and instrument.',
+    description:'Redshift has a life sciences platform and instruments that provide ultra-sensitive and precise measurements of molecular structures. Loft was tasked with providing an end-to-end experience, from creating a compact device with improved usability and a full-size touch screen. I led the experience design strategy, working with one other designer and a mechanical engineer to realize an intuitive experience.',
+    role:'Experience design lead', roleActivities:['User research','Design direction','UX & visual design'],
+    skills:[], team:[], chips:[], order:6, draft:false, featured:false,
+  }
+} as CollectionEntry<'work'>;
+---
+{unlocked ? <CaseStudyLayout entry={entry} noindex>
+  <figure class="redshift-hero"><img src="/api/redshift/instrument.jpg" alt="Redshift Bio Aurora instruments with touchscreens showing setup, sample plates, and analysis results" loading="eager"/></figure>
+  <h2>Design system</h2>
+  <figure><img src="/api/redshift/design-system.jpg" alt="Redshift Bio interface design system and visual guidelines" loading="lazy"/></figure>
+  <h2>The experience</h2>
+  <figure><img src="/api/redshift/experience.jpg" alt="Redshift Bio user experience flows and touchscreen interface designs" loading="lazy"/></figure>
+  <form class="lock-form" method="post" action="/api/redshift/access"><input type="hidden" name="action" value="lock"/><button type="submit">Lock this case study</button></form>
+</CaseStudyLayout> : <CaseStudyLayout entry={{...entry, data:{...entry.data, title:"Redshift Bio.", category:"Password protected", tagline:"A password-protected case study.", description:"This case study is shared privately. Enter the password to explore the work."}}} noindex hideRole hideNext pageTitle="Redshift Bio — Deanna Glaze">
+  {available ? <form class="unlock-form" method="post" action="/api/redshift/access">
+    <label for="case-password">Case study password</label>
+    <input id="case-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby={error ? 'password-error' : undefined}/>
+    {error && <p id="password-error" role="alert">That password didn’t match. Please try again.</p>}
+    <button class="button" type="submit">View case study <span aria-hidden="true">↗</span></button>
+  </form> : <p>Private access is being set up. Please check back shortly.</p>}
+  <p class="request-access">Need access? <a href="/contact">Let’s connect.</a></p>
+</CaseStudyLayout>}
+<style is:global>
+.protected-label{font-size:11px;letter-spacing:1.5px;color:var(--plum);margin-bottom:16px}.case-body:has(.unlock-form){display:block}.unlock-form{display:flex;flex-direction:column;gap:12px;max-width:420px;margin-top:0}.unlock-form label{font-size:14px}.unlock-form input{width:100%;font:inherit;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:white;color:var(--ink)}.unlock-form input:focus-visible{outline:2px solid var(--plum);outline-offset:3px}.unlock-form .button{display:flex;align-items:center;background:var(--plum);color:white;border-radius:4px;min-height:44px;padding:0 20px;border:0;font-family:inherit;cursor:pointer;justify-content:space-between;margin-top:8px}.unlock-form p{font-size:14px;margin:0;color:#9c2348}.request-access{font-size:14px;margin-top:28px}.case-body figure{margin:0}.case-body .redshift-hero{grid-column:1/-1}.lock-form{margin-top:24px}.lock-form button{font:inherit;font-size:13px;color:var(--plum);background:none;border:1px solid var(--line);border-radius:4px;padding:8px 14px;cursor:pointer}
+</style>

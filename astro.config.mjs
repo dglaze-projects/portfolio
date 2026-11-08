@@ -7,10 +7,8 @@ import rehypeImageLightbox from './scripts/rehype-image-lightbox.mjs';
 export default defineConfig({
   site: 'https://deannaglaze.com',
   trailingSlash: 'never',
-  // The site stays fully prerendered; the adapter exists solely so the
-  // one server route (/api/contact, prerender = false) can run as a
-  // Vercel function. Everything else builds to static HTML as before.
-  adapter: vercel(),
+  // Public pages are prerendered; contact and protected case-study routes run on the server.
+  adapter: vercel({ includeFiles: ['src/private/redshift/instrument.jpg', 'src/private/redshift/design-system.jpg', 'src/private/redshift/experience.jpg'] }),
   // Astro's built-in CSRF origin check misfires behind Vercel's proxy
   // (it reconstructs the request URL with the wrong scheme, so every
   // legitimate form post gets "Cross-site POST form submissions are

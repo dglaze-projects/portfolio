@@ -115,3 +115,11 @@ Shared navigation and metadata live in `PortfolioHeader.astro`, `PortfolioFooter
 Run `npm run build` followed by `node scripts/check-launch.mjs` before deployment. The check covers generated page links, local assets, metadata, and mocked contact delivery paths; it does not send email.
 
 The pre-launch source and design experiments are saved locally in ignored `design-archive/`. The previous production deployment is also recoverable through Vercel. Production source before the redesign is commit `853677945111f869faedc2b5c8f131fd49679ee9`. Revert the launch commit through Git to restore the previous version, or use Vercel's rollback control for an immediate rollback.
+
+### Password-protected Redshift Bio case study
+
+`/work/redshift-bio` is rendered on request and does not emit a static case-study page. Its images are served only by `/api/redshift/[image]` after checking the same signed access cookie. Responses use `private, no-store` and `noindex`; the page is excluded from the sitemap. Access lasts eight hours, with a “Lock this case study” action to clear the browser cookie. Do not put these images under `public/` or route them through Astro's public image optimizer.
+
+Set `REDSHIFT_ACCESS_CONFIG` in the existing Vercel project (Production and Preview). It is server-only JSON with a 16-byte hex `salt`, a 64-byte hex scrypt `hash`, and a random 32-byte hex `secret`. The local `.env` has the development value and is ignored by Git. Changing the password hash or secret invalidates existing access cookies. Never commit this setting or use a `PUBLIC_` prefix. Without valid configuration, access fails closed.
+
+Checks: `node scripts/check-redshift.mjs`, `npm run build`, `node scripts/check-launch.mjs`. The endpoint includes best-effort per-instance attempt throttling; it is not a distributed rate limiter. Older project images already exist in the public repository, and the Squarespace original remains separately accessible: this gate protects access through the new site, not those earlier copies.
