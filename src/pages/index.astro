@@ -1,240 +1,56 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import WorkRow from '../components/WorkRow.astro';
-import deannaIllus from '../assets/home/deanna-illus.png';
-
-const projects = (await getCollection('work', ({ data }) => !data.draft)).sort(
-  (a, b) => a.data.order - b.data.order
-);
-
-const approach = [
-  {
-    n: '01',
-    title: 'Clarity & shared ownership',
-    body: 'Bring cross-functional partners in early. Real alignment happens when teams debate the hard trade-offs early.',
-  },
-  {
-    n: '02',
-    title: 'Evidence over assumptions',
-    body: 'Continuous research to frame ambiguity, validate flows, and measure what matters.',
-  },
-  {
-    n: '03',
-    title: 'Systems that empower',
-    body: 'Scalable patterns, design operations, and governance that help teams move fast without losing quality.',
-  },
-  {
-    n: '04',
-    title: 'Glass Box',
-    body: "No black boxes. When AI takes action on a user's behalf, the system needs to explicitly reveal its reasoning and keep the user in the driver's seat.",
-  },
+import PageHead from '../components/PageHead.astro';
+import PortfolioHeader from '../components/PortfolioHeader.astro';
+import PortfolioFooter from '../components/PortfolioFooter.astro';
+import '@fontsource-variable/inter';
+const projects = [
+ {id:'amazon',client:'Amazon',category:'Publishing systems',role:'Lead UX Designer',href:'/work/amazon-convergence',title:'Three publishing tools. One coherent experience.',body:'I led research and information architecture to unify fragmented tools around how publishers work—and challenged where preserving features would preserve friction.',evidence:'Three platforms brought into one publishing experience',aside:'Deanna likes finding the underlying knot. Here, that meant questioning which problems were worth carrying forward.',imageAlt:'Amazon book publishing interface showing a unified title detail page'},
+ {id:'vp',client:'Virgin Pulse',category:'Platform strategy',role:'Design & Research Director',href:'/work/vp',title:'One platform. Many needs.',body:'I brought research, teams, and modular design together to shape a configurable health platform.',evidence:'20+ designers, researchers, and data scientists led',aside:'Connecting the teams mattered as much as connecting the experience.',imageAlt:'Virgin Pulse Homebase for Health dashboard with benefits actions and a personalized welcome'},
+ {id:'lotic',client:'Lotic',category:'Human-centered AI',role:'Product & Design Lead',href:'/work/lotic',title:'Making AI feel more human.',body:'I shaped a conversational wellbeing experience around trust, choice, and learning—taking the product from concept to a shipped MVP in 90 days.',evidence:'27% increase in prompt completion over the Alpha',aside:'The important part? Giving people a choice in how they share. That is where trust starts.',imageAlt:'Lotic wellbeing app screens showing prompts, personal insights, and financial wellbeing'},
 ];
 ---
+<!doctype html>
+<html lang="en">
+<PageHead title="Deanna Glaze — Product Design Leader" description="Meet Deanna Glaze through her work in publishing, health platforms, and human-centered AI." />
+<body>
+<a class="skip" href="#work">Skip to selected work</a>
+<div class="page">
+<PortfolioHeader active="work" />
+<main>
+<section class="intro"><h1>Good design makes the<br class="desktop-break"/> complicated feel clear.</h1></section>
+<section id="work" aria-label="Selected work">
+<div class="section-heading"><span>Selected work</span></div><div class="projects">
+{projects.map(p=><article class:list={['project',{'selected':p.id==='lotic'}]} data-project={p.id}>
+<button class="preview" aria-label={`Preview ${p.client} case study`} aria-expanded={p.id==='lotic'?'true':'false'} aria-controls={`abstract-${p.id}`} data-select={p.id}><span class="art-crop"><img src={`/images/exploration/projects/${p.id}-thumb.webp`} width="192" height="174" alt=""/></span><span class="preview-label">Quick look</span></button>
+<h2><button data-select={p.id} aria-controls={`abstract-${p.id}`}>{p.client}</button></h2><p class="category">{p.category}</p><p class="role">{p.role}</p><a class="direct" href={p.href}>Full case study <span aria-hidden="true">↗</span></a>
+</article>)}
+</div>
+<div class="presentation" aria-live="polite" aria-atomic="false">
+{projects.map(p=><section id={`abstract-${p.id}`} class="abstract" hidden={p.id!=='lotic'} aria-labelledby={`title-${p.id}`}>
+<div class="screen"><div class="copy"><p class="eyebrow">{p.client}</p><h2 id={`title-${p.id}`}>{p.title}</h2><p class="summary">{p.body}</p><a class="cta" href={p.href}>Read full case study <span aria-hidden="true">↗</span></a></div><div class="case-evidence"><img class="feature-image" src={`/images/exploration/projects/${p.id}-feature.webp`} width="852" height="426" alt={p.imageAlt}/><div class="outcome"><p class="metric">{p.id==='lotic'?'27%':p.id==='vp'?'20+':'3'}</p><p>{p.id==='lotic'?'increase in prompt completion over the Alpha':p.id==='vp'?'designers, researchers, and data scientists led':'publishing platforms brought into one experience'}</p></div></div></div>
+<aside class="host"><div class="monkey-crop"><img src="/images/exploration/monkeyshine-wayfarer.png" alt="Monkeyshine wearing Wayfarer-style glasses"/></div><div><p class="reflection">{p.aside}</p></div></aside>
+</section>)}
+</div>
+</section>
+<PortfolioFooter />
+</main>
+</div>
+<script>
+const selectors = document.querySelectorAll<HTMLButtonElement>('[data-select]');
+function selectProject(id: string) {
 
-<BaseLayout theme="nightfall">
-  <Hero
-    eyebrow="Digital Experience & Product Design Leader"
-    sub="I lead teams and design experiences that make complex products and services easier to understand and use. My work spans healthcare, publishing, automotive, and AI, connecting customer needs with product strategy and technology."
-    primaryLabel="Explore the work"
-    primaryHref="/work"
-    secondaryLabel="See how I think"
-    secondaryHref="/about"
-    image={deannaIllus}
-    imageAlt="Illustration of Deanna Glaze"
-    variant="nightfall"
-  >
-    I like making sense of complexity.
-  </Hero>
-
-  <section class="approach" aria-labelledby="approach-heading">
-    <div class="container">
-      <p class="eyebrow">How I work</p>
-      <h2 id="approach-heading" class="approach__heading">
-        Clarity first. Then agency.
-      </h2>
-      <ul class="approach__grid">
-        {
-          approach.map((step) => (
-            <li class="step">
-              <span class="step__number" aria-hidden="true">{step.n}</span>
-              <p class="step__title">{step.title}</p>
-              <p class="step__body">{step.body}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <section class="showcase" aria-labelledby="work-heading">
-    <div class="container">
-      <div class="showcase__head">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 id="work-heading" class="showcase__heading">
-            Case studies across AI, health, and enterprise platforms
-          </h2>
-        </div>
-        <a class="showcase__all" href="/work">All work →</a>
-      </div>
-      <div class="showcase__list">
-        {
-          projects.map((project, i) => (
-            <WorkRow
-              href={`/work/${project.id}`}
-              index={i + 1}
-              client={project.data.client}
-              category={project.data.category}
-              title={project.data.shortTitle ?? project.data.title}
-              tagline={project.data.tagline}
-              chips={project.data.chips}
-              highlightChip={project.data.highlightChip}
-              featured={project.data.featured}
-              cover={project.data.cover}
-              coverAlt={project.data.coverAlt}
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="closer" aria-labelledby="closer-heading">
-    <div class="container closer__inner">
-      <h2 id="closer-heading" class="closer__heading">
-        See the thinking behind the work
-      </h2>
-      <p class="closer__body">
-        The research, the trade-offs, and what actually shipped.
-      </p>
-      <a class="button" href="/work">Explore case studies <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  /* Home sections sit on the flat Nightfall canvas (1b); the
-     gradient lives in the hero, the glow in the closer. */
-
-  /* ---- How I work — compact approach strip (1b) ---- */
-  .approach {
-    padding-block: var(--space-7);
-  }
-
-  .approach__heading {
-    margin-block-start: var(--space-2);
-    font-size: var(--text-xl);
-  }
-
-  .approach__grid {
-    list-style: none;
-    margin: var(--space-6) 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--space-6);
-  }
-
-  .step {
-    /* Deliberately the stronger border tier: the default divider is
-       too faint against the flat dark canvas (De's call). */
-    border-block-start: var(--border-thin) solid var(--color-border-control);
-    padding-block-start: var(--space-4);
-  }
-
-  .step__number {
-    display: block;
-    font-family: var(--font-display);
-    font-size: var(--text-md);
-    color: var(--color-accent);
-  }
-
-  .step__title {
-    margin-block-start: var(--space-2);
-    font-weight: var(--weight-semibold);
-  }
-
-  .step__body {
-    margin-block-start: var(--space-1);
-    font-size: var(--text-sm);
-    line-height: 1.55;
-    color: var(--color-text-secondary);
-  }
-
-  /* ---- Work showcase ---- */
-  .showcase {
-    padding-block: var(--space-6) var(--space-7);
-  }
-
-  .showcase__head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-5);
-    margin-block-end: var(--space-6);
-  }
-
-  .showcase__heading {
-    margin-block-start: var(--space-3);
-    font-size: var(--text-2xl);
-  }
-
-  .showcase__all {
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-sm);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .showcase__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  /* ---- Closing CTA — recessed band with magenta glow (1b) ---- */
-  .closer {
-    padding-block: var(--space-8) var(--space-9);
-    text-align: center;
-    background-color: var(--color-bg-recessed);
-    background-image: var(--band-closer-glow);
-    border-block-start: var(--border-thin) solid var(--color-border-divider);
-  }
-
-  .closer__heading {
-    font-size: var(--text-2xl);
-    max-width: 20ch;
-    margin-inline: auto;
-  }
-
-  .closer__body {
-    margin-block-start: var(--space-4);
-    margin-inline: auto;
-    color: var(--color-text-secondary);
-    font-size: var(--text-md);
-    max-width: 46ch;
-  }
-
-  .closer .button {
-    margin-block-start: var(--space-6);
-  }
-
-  @media (max-width: 820px) {
-    .approach__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .showcase__head {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  @media (max-width: 540px) {
-    .approach__grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+ document.querySelectorAll<HTMLElement>('[data-project]').forEach(card=>card.classList.toggle('selected',card.dataset.project===id));
+ document.querySelectorAll<HTMLElement>('.abstract').forEach(panel=>panel.hidden=panel.id!==`abstract-${id}`);
+ document.querySelectorAll<HTMLButtonElement>('.preview').forEach(button=>button.setAttribute('aria-expanded',String(button.dataset.select===id)));
+}
+selectors.forEach(button=>button.addEventListener('click',()=>selectProject(button.dataset.select!)));
+</script>
+<style is:global>
+:root{--ink:#29282d;--muted:#66616b;--plum:#853b72;--line:#e4dfe4;--selected:#f7f0f5;--panel:#fdfbfd}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:15px/1.5 'Inter Variable',Arial,sans-serif;padding-bottom:68px}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}button{font:inherit;color:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid var(--plum);outline-offset:4px}.page{max-width:1472px;padding:0 80px;margin:auto}header{height:88px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.wordmark{font-size:19px;font-weight:600;letter-spacing:-.6px}nav{display:flex;gap:36px;font-size:13px;color:var(--muted)}nav .active{color:var(--plum);font-weight:600;border-bottom:2px solid var(--plum);padding-bottom:8px;margin-bottom:-10px}h1,h2,p{margin:0}.intro{padding:40px 0 42px}h1{font:400 64px/64px Newsreader,Georgia,serif;letter-spacing:-1.8px}.intro p{font-size:18px;line-height:27px;color:var(--muted);margin-top:18px}#work{display:grid;grid-template-columns:340px minmax(0,1fr);column-gap:48px;row-gap:18px}.section-heading{line-height:13px;grid-column:1/-1;display:flex;justify-content:space-between;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}#selection-label{color:var(--plum);letter-spacing:1px}.projects{display:flex;flex-direction:column}.project{height:128px;padding:16px;display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:16px;align-content:center;border-bottom:1px solid var(--line)}.project.selected{background:var(--selected);border-bottom:0;border-left:2px solid var(--plum);padding-left:14px}.preview{grid-row:1/5;border:0;padding:0;background:none;align-self:center;width:64px;height:58px}.preview-label{display:none}.art-crop{display:block;width:64px;height:58px;overflow:hidden;border-radius:10px;position:relative;background:#fff;box-shadow:0 2px 6px rgb(41 40 45 / .10),0 5px 12px rgb(41 40 45 / .04)}.art-crop::after{content:"";position:absolute;inset:0;border:1px solid rgb(41 40 45 / .12);border-radius:inherit;pointer-events:none}.art-crop img{display:block;width:100%;height:100%;object-fit:cover}.project h2{font:500 28px/29px Newsreader,Georgia,serif;margin-bottom:5px}.project h2 button{border:0;background:none;padding:0;font:inherit;text-align:left;width:100%}.selected h2 button{color:var(--plum)}.selected h2 button:after{content:'→';float:right;font:18px 'Inter Variable',sans-serif}.category{font-size:13px;line-height:18px;margin-bottom:5px}.role,.direct{font-size:11px;line-height:16px;color:var(--muted)}.role{margin-bottom:5px}.direct{font-weight:500}.selected .direct{color:var(--plum)}.abstract[hidden]{display:none}.screen{display:flex;gap:24px;align-items:center;padding:32px;min-height:340px;border:1px solid var(--line);border-radius:4px;background:var(--panel)}.copy{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:16px}.eyebrow{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--plum)}.screen h2{font:400 46px/45px Newsreader,Georgia,serif;letter-spacing:-1px;max-width:17ch}#title-lotic{max-width:13ch}.summary{font-size:15px;line-height:23px;color:var(--muted)}.cta{height:40px;display:inline-flex;align-items:center;gap:24px;border-radius:4px;background:var(--plum);color:#fff;padding:0 18px;font-size:12px;font-weight:500}.case-evidence{width:284px;flex-shrink:0;display:flex;flex-direction:column;gap:24px}.feature-image{display:block;width:100%;height:auto;aspect-ratio:2;object-fit:cover;border-radius:10px}.outcome{border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12px;line-height:18px}.metric{font:400 42px/42px Newsreader,Georgia,serif;color:var(--plum);margin-bottom:8px}.host{display:flex;gap:20px;align-items:center;margin-top:16px;padding:0 32px 0 24px}.monkey-crop{flex:0 0 93px;height:111px;overflow:hidden;position:relative}.monkey-crop img{display:block;width:100%;height:100%;object-fit:contain}.human-label{font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--plum);margin-bottom:8px}.reflection{font:italic 400 23px/28px Newsreader,Georgia,serif}footer{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:calc(100% - 160px);max-width:1312px;height:44px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);background:#fff;z-index:10;font-size:13px;font-weight:500;color:var(--muted)}footer a{display:flex;align-items:center;min-height:44px}footer a:last-child{color:var(--plum)}.skip{position:fixed;transform:translateY(-200%);background:#fff;padding:10px;z-index:20}.skip:focus{transform:none}
+@media(max-width:1200px){.page{padding:0 40px}#work{grid-template-columns:290px minmax(0,1fr);gap:18px 30px}.case-evidence{width:210px}.screen{padding:24px;gap:20px}.screen h2{font-size:40px;line-height:40px}footer{width:calc(100% - 80px)}}
+@media(min-width:761px) and (max-height:800px){.intro{padding-top:24px;padding-bottom:26px}h1{font-size:52px;line-height:52px}.screen{min-height:310px}.host{margin-top:10px}.monkey-crop{transform:scale(.85);transform-origin:center;margin-block:-8px}}
+@media(max-width:1000px){.case-evidence{width:150px}.screen{padding:22px;gap:16px}.screen h2{font-size:34px;line-height:35px}.reflection{font-size:21px}.host{padding:0;gap:12px}}
+@media(max-width:760px){body{padding-bottom:0}.page{padding:0 22px}header{height:76px}nav{gap:20px}.wordmark{font-size:18px}.intro{padding:30px 0}h1{font-size:42px;line-height:43px;letter-spacing:-1px}.desktop-break{display:none}.intro p{font-size:16px}#work{display:flex;flex-direction:column;gap:18px}.section-heading{width:100%}.project{height:112px}.screen{flex-direction:column;align-items:stretch;padding:24px}.case-evidence{width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:18px}.outcome{padding-top:10px}.host{padding:0;gap:12px}.reflection{font-size:21px;line-height:25px}footer{position:static;transform:none;width:100%;margin-top:24px;height:48px}.direct{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></body></html>

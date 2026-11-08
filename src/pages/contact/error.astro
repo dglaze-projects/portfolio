@@ -1,51 +1,8 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import UtilityLayout from '../../layouts/UtilityLayout.astro';
 import { SOCIAL } from '../../data/site';
-
-const linkedin = SOCIAL.find((s) => s.label === 'LinkedIn')?.href;
+const linkedin = SOCIAL.find(s=>s.label==='LinkedIn')?.href;
 ---
-
-<BaseLayout
-  title="Something went wrong"
-  description="The message didn't go through."
-  theme="aurora"
->
-  <section class="section confirm">
-    <div class="container confirm__inner">
-      <p class="eyebrow">Let's connect</p>
-      <h1 class="confirm__heading">That didn't go through.</h1>
-      <p class="confirm__body">
-        Sorry — the message couldn't be sent. Please try again, or reach me on
-        {linkedin ? <a href={linkedin} rel="me noopener" target="_blank">LinkedIn</a> : 'LinkedIn'}
-        instead.
-      </p>
-      <a class="button" href="/contact">Try again <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .confirm {
-    text-align: center;
-  }
-
-  .confirm__inner {
-    max-width: var(--container-narrow);
-  }
-
-  .confirm__heading {
-    margin-block-start: var(--space-4);
-  }
-
-  .confirm__body {
-    margin-block-start: var(--space-4);
-    margin-inline: auto;
-    color: var(--color-text-secondary);
-    font-size: var(--text-md);
-    max-width: 44ch;
-  }
-
-  .confirm .button {
-    margin-block-start: var(--space-6);
-  }
-</style>
+<UtilityLayout title="Something went wrong" description="The message didn't go through." active="contact" noindex>
+<h1>That didn’t go through.</h1><p>Sorry — the message couldn’t be sent. Please try again, or reach me on {linkedin && <a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>} instead.</p><a class="button" href="/contact">Try again →</a>
+</UtilityLayout>

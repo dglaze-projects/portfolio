@@ -1,43 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import UtilityLayout from '../../layouts/UtilityLayout.astro';
 ---
-
-<BaseLayout title="Message sent" description="Your message is on its way." theme="aurora">
-  <section class="section confirm">
-    <div class="container confirm__inner">
-      <p class="eyebrow">Let's connect</p>
-      <h1 class="confirm__heading">Message sent.</h1>
-      <p class="confirm__body">
-        Thanks for reaching out — your note is on its way to my inbox, and
-        I'll get back to you soon.
-      </p>
-      <a class="button" href="/">Back to home <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .confirm {
-    text-align: center;
-  }
-
-  .confirm__inner {
-    max-width: var(--container-narrow);
-  }
-
-  .confirm__heading {
-    margin-block-start: var(--space-4);
-  }
-
-  .confirm__body {
-    margin-block-start: var(--space-4);
-    margin-inline: auto;
-    color: var(--color-text-secondary);
-    font-size: var(--text-md);
-    max-width: 44ch;
-  }
-
-  .confirm .button {
-    margin-block-start: var(--space-6);
-  }
-</style>
+<UtilityLayout title="Message sent" description="Your message is on its way." active="contact" noindex>
+<h1>Message sent.</h1><p>Thanks for reaching out — your note is on its way to my inbox, and I'll get back to you soon.</p><a class="button" href="/">Back to home →</a>
+</UtilityLayout>

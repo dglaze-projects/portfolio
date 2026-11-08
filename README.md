@@ -1,8 +1,7 @@
 # deannaglaze.com
 
 Portfolio site for Deanna Glaze. Built with [Astro](https://astro.build),
-styled with a token-based design system (see `DESIGN-SYSTEM.md`), deployed on
-Vercel. Fully static — no client-side JavaScript is shipped.
+styled with Newsreader and Inter, deployed on Vercel. Static pages with a server-backed contact form. Small client scripts handle project selection and contact-form feedback.
 
 ## Quick start
 
@@ -106,3 +105,13 @@ original Squarespace CDN URL to download before the subscription ends.
 Page paths were kept identical to the Squarespace site (`/work/vp`,
 `/designresources`, …) so existing links and search engine results keep
 working without redirects.
+
+## November 2026 redesign launch
+
+The reviewed redesign now uses the original public routes: `/`, `/about`, `/contact`, `/work`, and `/work/<slug>`. The contact endpoint at `/api/contact` is unchanged, including Resend delivery, validation, origin checks, and its honeypot. Keep `RESEND_API_KEY` configured in the existing Vercel project. Contact success and error pages support form submissions without JavaScript; the enhanced form preserves input after an error.
+
+Shared navigation and metadata live in `PortfolioHeader.astro`, `PortfolioFooter.astro`, and `PageHead.astro`. The case-study template is `CaseStudyLayout.astro`. Case-study content remains in `src/content/work/`. Original-project thumbnail crops can be rebuilt with `node scripts/build-project-previews.mjs`.
+
+Run `npm run build` followed by `node scripts/check-launch.mjs` before deployment. The check covers generated page links, local assets, metadata, and mocked contact delivery paths; it does not send email.
+
+The pre-launch source and design experiments are saved locally in ignored `design-archive/`. The previous production deployment is also recoverable through Vercel. Production source before the redesign is commit `853677945111f869faedc2b5c8f131fd49679ee9`. Revert the launch commit through Git to restore the previous version, or use Vercel's rollback control for an immediate rollback.
