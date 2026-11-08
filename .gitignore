@@ -30,3 +30,10 @@ recovery-codes.txt
 
 # local cleanup folder
 _to_delete/
+
+# Local design history and review captures
+design-archive/
+prototype-*.png
+type-study.png
+.env.*
+!.env.example

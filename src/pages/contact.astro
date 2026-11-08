@@ -1,38 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { SOCIAL } from '../data/site';
-
-const linkedin = SOCIAL.find((s) => s.label === 'LinkedIn')?.href;
+import PageHead from '../components/PageHead.astro';
+import PortfolioHeader from '../components/PortfolioHeader.astro';
+import PortfolioFooter from '../components/PortfolioFooter.astro';
+import '@fontsource-variable/inter';
 ---
-
-<BaseLayout
-  title="Contact"
-  description="Get in touch with Deanna Glaze about product design, AI-UX, and collaboration."
-  theme="aurora"
->
-  <section class="section--tight">
-    <div class="container contact">
-      <div class="contact__intro">
-        <p class="eyebrow">Let's connect</p>
-        <h1 class="contact__heading">Tell me what you're working on.</h1>
-        <p class="contact__body">
-          Interested in collaborating, or want to talk through a hard design
-          problem? Send a note and it lands straight in my inbox.
-        </p>
-        {
-          linkedin && (
-            <p class="contact__alt">
-              Prefer to connect on{' '}
-              <a href={linkedin} rel="me noopener" target="_blank">
-                LinkedIn
-              </a>
-              ? That works too.
-            </p>
-          )
-        }
-      </div>
-
-      <form class="contact-form" method="POST" action="/api/contact">
+<!doctype html>
+<html lang="en"><PageHead title="Contact — Deanna Glaze" description="Get in touch with Deanna Glaze about product design, leadership opportunities, and collaboration." />
+<body><a class="skip" href="#main">Skip to content</a><div class="page">
+<PortfolioHeader active="contact" />
+<main id="main"><section class="contact"><div><h1>Let’s connect.</h1><div class="monkey-introduction"><img class="monkeyshine" src="/images/exploration/monkeyshine-wayfarer.png" width="1280" height="1280" alt="Monkeyshine wearing black Wayfarer-style glasses"/><div class="welcome-callout"><p class="intro-copy">Interested in collaborating, or want to talk through a hard design problem? Tell me what you’re working on.</p><p class="alternate">Prefer to connect on <a href="https://www.linkedin.com/in/deannaglaze" target="_blank" rel="noopener noreferrer">LinkedIn</a>? That works too.</p></div></div></div><form class="contact-form" method="POST" action="/api/contact">
         <p class="field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" required maxlength="200" autocomplete="name" />
@@ -50,98 +26,41 @@ const linkedin = SOCIAL.find((s) => s.label === 'LinkedIn')?.href;
           <label for="cf-company">Company</label>
           <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off" />
         </p>
-        <p class="contact-form__actions">
+        <p class="form-note">All fields are required.</p><p class="contact-form__actions">
           <button class="button" type="submit">
             Send message <span aria-hidden="true">→</span>
           </button>
         </p>
-      </form>
-    </div>
-  </section>
-</BaseLayout>
+      <p id="form-status" role="status" aria-live="polite" tabindex="-1"></p></form></section></main><PortfolioFooter /></div><style is:global>:root{--ink:#29282d;--muted:#66616b;--plum:#853b72;--line:#e4dfe4}*{box-sizing:border-box}body{padding-bottom:68px;margin:0;background:white;color:var(--ink);font:18px/29px 'Inter Variable',Arial,sans-serif}.page{max-width:1472px;padding:0 80px;margin:auto}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}a:focus-visible{outline:2px solid var(--plum);outline-offset:5px}h1,h2,p{margin:0}header{height:88px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.wordmark{font-size:19px;font-weight:600;letter-spacing:-.6px}nav{display:flex;gap:36px;font-size:13px;line-height:normal;color:var(--muted)}nav .active{color:var(--plum);font-weight:600;border-bottom:2px solid var(--plum);padding-bottom:8px;margin-bottom:-10px}footer{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:calc(100% - 160px);max-width:1312px;height:44px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);background:#fff;z-index:10;font-size:13px;font-weight:500;color:var(--muted)}footer a{display:flex;align-items:center;min-height:44px}footer a:last-child{color:var(--plum)}.skip{position:fixed;transform:translateY(-200%);background:white;padding:10px;z-index:20}.skip:focus{transform:none}
 
-<style>
-  .contact {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: var(--space-8);
-    align-items: start;
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:88px;padding:56px 0 64px;align-items:start}
+h1{font:400 64px/64px Newsreader,Georgia,serif;letter-spacing:-1.8px;max-width:12ch;margin-bottom:28px}
+.monkey-introduction{display:flex;align-items:flex-start;gap:18px;margin-top:36px}.monkeyshine{transform:scaleX(-1);width:140px;height:170px;object-fit:contain;flex-shrink:0;margin-top:20px}.welcome-callout{position:relative;background:#f7f0f5;border-radius:12px;padding:24px;flex:1;min-width:0}.welcome-callout::before{content:"";position:absolute;left:-10px;top:45px;width:20px;height:20px;background:#f7f0f5;transform:rotate(45deg)}.intro-copy{font-size:18px;line-height:29px;color:var(--muted);max-width:39ch}
+.alternate{margin-top:24px;font-size:14px;line-height:23px;color:var(--muted)}.alternate a{color:var(--plum);text-decoration:underline;text-underline-offset:3px}
+.contact-form{display:grid;gap:24px;padding-top:8px;max-width:600px;width:100%}.field{display:grid;gap:10px}.field label{font-size:13px;font-weight:500;line-height:20px}
+.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:4px;background:#fdfbfd;padding:12px 14px;color:var(--ink);font:16px/24px 'Inter Variable',Arial,sans-serif}.field input{height:48px}.field textarea{min-height:180px;resize:vertical}.field input:focus,.field textarea:focus{outline:2px solid var(--plum);outline-offset:2px}.field--hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-note{font-size:12px;line-height:18px;color:var(--muted);margin-top:-8px}.button{border:0;display:inline-flex;align-items:center;gap:32px;background:var(--plum);color:white;padding:0 20px;height:44px;border-radius:4px;font:500 13px 'Inter Variable',Arial,sans-serif;cursor:pointer}.button:hover{background:#713261}.button:focus-visible{outline:2px solid var(--plum);outline-offset:4px}.button:disabled{opacity:.65;cursor:wait}#form-status{font-size:14px;line-height:23px;color:var(--plum)}#form-status:empty{display:none}
+@media(min-width:761px) and (max-width:1100px){.monkey-introduction{flex-direction:column;gap:12px;margin-top:24px}.monkeyshine{width:120px;height:140px;margin-top:0}.welcome-callout::before{left:50px;top:-10px}}
+@media(max-width:1200px){.page{padding:0 40px}.contact{gap:48px}footer{width:calc(100% - 80px)}}
+@media(max-width:760px){body{padding-bottom:0}.page{padding:0 22px}header{height:76px}.wordmark{font-size:18px}nav{gap:20px}.contact{grid-template-columns:1fr;gap:32px;padding:30px 0}h1{font-size:44px;line-height:46px;letter-spacing:-1px;max-width:12ch;margin-bottom:24px}.monkey-introduction{gap:12px;margin-top:24px}.monkeyshine{width:76px;height:110px;margin-top:16px}.welcome-callout{padding:20px}.intro-copy{font-size:16px;line-height:26px}.alternate{margin-top:18px}.contact-form{padding:0;max-width:none}footer{position:static;transform:none;width:100%;margin-top:24px;height:48px}}
+</style><script>
+const form = document.querySelector<HTMLFormElement>('.contact-form');
+form?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  const status = document.querySelector<HTMLElement>('#form-status')!;
+  button.disabled = true;
+  status.textContent = 'Sending your message…';
+  try {
+    const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+    if (!response.ok || new URL(response.url).pathname.replace(/\/$/, '') !== '/contact/thanks') throw new Error('Message not sent');
+    status.textContent = "Thanks for reaching out. Your message is on its way to my inbox.";
+    form.reset();
+  } catch {
+    status.textContent = "Your message couldn’t be sent. Please try again, or connect with me on LinkedIn. Your message is still here.";
+  } finally {
+    button.disabled = false;
+    status.focus();
   }
-
-  .contact__heading {
-    margin-block-start: var(--space-4);
-    font-size: var(--text-2xl);
-  }
-
-  .contact__body {
-    margin-block-start: var(--space-5);
-    color: var(--color-text-secondary);
-    font-size: var(--text-md);
-    line-height: var(--leading-normal);
-    max-width: 40ch;
-  }
-
-  .contact__alt {
-    margin-block-start: var(--space-4);
-    color: var(--color-text-secondary);
-    font-size: var(--text-sm);
-  }
-
-  .contact-form {
-    display: grid;
-    gap: var(--space-5);
-    background: var(--color-bg-raised);
-    border: var(--border-thin) solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-6);
-  }
-
-  .field {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .field label {
-    font-size: var(--text-sm);
-    font-weight: var(--weight-semibold);
-  }
-
-  .field input,
-  .field textarea {
-    width: 100%;
-    background: var(--color-bg-subtle);
-    border: var(--border-thin) solid var(--color-border-control);
-    border-radius: var(--radius-sm);
-    padding: var(--space-3);
-    color: var(--color-text);
-    font: inherit;
-  }
-
-  .field textarea {
-    resize: vertical;
-    min-height: 9rem;
-  }
-
-  /* Honeypot — parked far off-canvas, skipped by keyboard order. */
-  .field--hp {
-    position: absolute;
-    inset-inline-start: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-
-  .contact-form__actions {
-    margin: 0;
-  }
-
-  .contact-form .button {
-    cursor: pointer;
-  }
-
-  @media (max-width: 820px) {
-    .contact {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+});
+</script></body></html>

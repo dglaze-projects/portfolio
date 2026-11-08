@@ -1,0 +1,5 @@
+---
+interface Props { active?: 'work' | 'about' | 'contact' }
+const { active } = Astro.props;
+---
+<header class="site-header"><a class="wordmark" href="/">Deanna Glaze</a><nav aria-label="Main navigation">{[{id:'work',label:'Work',href:'/'},{id:'about',label:'About',href:'/about'},{id:'contact',label:'Contact',href:'/contact'}].map(item=><a class:list={{active:active===item.id}} aria-current={active===item.id?'page':undefined} href={item.href}>{item.label}</a>)}</nav></header>
