@@ -1,5 +1,15 @@
 ---
-interface Props { active?: 'work' | 'about' | 'contact' }
+interface Props { active?: 'home' | 'work' | 'about' | 'contact' }
 const { active } = Astro.props;
 ---
-<header class="site-header"><a class="wordmark" href="/">Deanna Glaze</a><nav aria-label="Main navigation">{[{id:'work',label:'Work',href:'/'},{id:'about',label:'About',href:'/about'},{id:'contact',label:'Contact',href:'/contact'}].map(item=><a class:list={{active:active===item.id}} aria-current={active===item.id?'page':undefined} href={item.href}>{item.label}</a>)}</nav></header>
+<header class="site-header"><a class="wordmark" href="/">Deanna Glaze</a><nav aria-label="Main navigation">{[{id:'home',label:'Home',href:'/'},{id:'work',label:'Work',href:'/work'},{id:'about',label:'About',href:'/about'},{id:'contact',label:'Contact',href:'/contact'}].map(item=><a class:list={{active:active===item.id}} aria-current={active===item.id?'page':undefined} href={item.href}>{item.label}</a>)}</nav></header>
+
+<style>
+/* Let the four primary links breathe on narrow screens. */
+@media (max-width: 600px) {
+  header.site-header { height:auto; min-height:100px; padding:18px 0 16px; flex-direction:column; align-items:flex-start; justify-content:center; gap:18px; }
+  .site-header nav { width:100%; gap:28px; }
+  .site-header nav a { padding-block:4px; }
+  .site-header nav a.active { padding-bottom:4px; margin-bottom:-2px; }
+}
+</style>

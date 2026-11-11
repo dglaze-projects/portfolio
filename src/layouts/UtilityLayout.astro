@@ -3,7 +3,7 @@ import '@fontsource-variable/inter';
 import PageHead from '../components/PageHead.astro';
 import PortfolioHeader from '../components/PortfolioHeader.astro';
 import PortfolioFooter from '../components/PortfolioFooter.astro';
-interface Props { title: string; description?: string; noindex?: boolean; active?: 'work' | 'about' | 'contact' }
+interface Props { title: string; description?: string; noindex?: boolean; active?: 'home' | 'work' | 'about' | 'contact' }
 const {title,description,noindex=false,active}=Astro.props;
 ---
 <!doctype html><html lang="en"><PageHead title={`${title} — Deanna Glaze`} description={description} noindex={noindex}/><body><a class="skip" href="#main">Skip to content</a><div class="page"><PortfolioHeader active={active}/><main id="main"><slot/></main><PortfolioFooter/></div></body></html>
