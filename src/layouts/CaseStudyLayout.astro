@@ -1,4 +1,5 @@
 ---
+import CaseStudyScreens from '../components/CaseStudyScreens.astro';
 import PageHead from '../components/PageHead.astro';
 import PortfolioHeader from '../components/PortfolioHeader.astro';
 import PortfolioFooter from '../components/PortfolioFooter.astro';
@@ -26,7 +27,7 @@ const activities = d.roleActivities.length ? d.roleActivities : d.skills;
 {!Astro.props.hideRole && <div class="details"><section><h2 class="eyebrow">My role</h2><p>{d.role}</p>{d.roleSummary && <p>{d.roleSummary}</p>}{activities.map(item=><p>{item}</p>)}</section></div>}
 </div>
 </div>
-{d.cover && <Image class="cover" src={d.cover} alt={d.coverAlt || ''} widths={[768,1312,1968]} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1200px) calc(100vw - 80px), 1312px" loading="eager"/>}
+{d.coverScreens?.length ? <CaseStudyScreens screens={d.coverScreens}/> : d.cover && <Image class="cover" src={d.cover} alt={d.coverAlt || ''} widths={[768,1312,1968]} sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1200px) calc(100vw - 80px), 1312px" loading="eager"/>}
 <div class:list={['case-body', {'lotic':entry.id==='lotic'}]}><slot/></div>
 </article>
 {!Astro.props.hideNext && next && next.id!==entry.id && <a class="next-project" href={`/work/${next.id}`}><div><p class="eyebrow">Next project</p><p class="next-title">{`${next.data.client} — ${next.data.shortTitle || next.data.title}`}</p></div><span aria-hidden="true">→</span></a>}
@@ -40,4 +41,6 @@ const activities = d.roleActivities.length ? d.roleActivities : d.skills;
 @media(max-width:1200px){.intro-summary{grid-template-columns:minmax(0,1fr) 280px;gap:40px}.page{padding:0 40px}.case-body{grid-template-columns:160px minmax(0,1fr);column-gap:32px}.case-body>h2::before{left:-192px}footer{width:calc(100% - 80px)}h1{font-size:44px;line-height:1.3}}
 @media(max-width:760px){body{padding-bottom:0}.page{padding:0 22px}.site-header{height:76px}.wordmark{font-size:18px}nav{gap:20px}.introduction{padding:28px 0 32px;gap:24px}.overview{padding-top:0}h1{font-size:34px;line-height:1.35;letter-spacing:-.015em}.description{font-size:17px;line-height:28px}.intro-summary{grid-template-columns:1fr;gap:28px}.cover{border-radius:12px}.case-body{display:flex;flex-direction:column;gap:20px;font-size:16px;line-height:27px}.case-body>h2,.case-body>h3{font-size:26px;line-height:1.4;margin-top:40px}.case-body>h2:first-child{margin-top:40px}.case-body>h2:has(+h3){width:100%;margin-top:40px}.case-body>h2+h3,.case-body>h2:first-child+h3{margin-top:0}.case-body>h2::before{left:0;top:-16px}.case-body>h2:has(+h3)::before{top:8px}.case-body blockquote{padding:22px}.case-body blockquote p{font-size:21px;line-height:1.6}.case-body.lotic>ul,.case-body>.metrics{grid-template-columns:1fr;gap:24px}.case-body>video{padding:20px;max-height:650px}.next-project{margin-top:48px}.next-title{font-size:23px;line-height:1.4}footer{position:static;transform:none;width:100%;margin-top:24px;height:48px}}
 h1,h2,h3{text-wrap:balance}
+.fluidlogic-phone{max-width:360px;width:100%;justify-self:center}.fluidlogic-phone-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;max-width:760px;justify-self:center;width:100%}.fluidlogic-phone p,.fluidlogic-phone-pair p{margin:0}.fluidlogic-phone-pair .lightbox-trigger img,.fluidlogic-phone .lightbox-trigger img{border-radius:12px}
+@media(max-width:480px){.fluidlogic-phone-pair{gap:14px}.fluidlogic-phone{max-width:300px;align-self:center}}
 </style>

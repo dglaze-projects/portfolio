@@ -25,6 +25,7 @@ const work = defineCollection({
      */
     cover: image().optional(),
     coverAlt: z.string().optional(),
+    coverScreens: z.array(z.object({src: image(), alt:z.string()})).default([]),
     /** Set true to hide from the site without deleting the file */
     draft: z.boolean().default(false),
 
