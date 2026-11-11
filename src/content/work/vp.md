@@ -36,7 +36,7 @@ The challenge was to support different employer configurations while giving ever
 
 ## Leadership
 
-### Bringing teams together around a shared strategy
+### Rethinking how we design
 
 As Director of Product Design & Research, I led a multidisciplinary team of 20+ designers, researchers, data scientists, and a design engineer.
 
