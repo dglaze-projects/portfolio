@@ -1,10 +1,10 @@
 ---
-title: 'One health platform, configured around different needs'
+title: 'One platform. Different needs. A coherent experience.'
 tagline: "A configurable health platform that brings wellness, benefits, and condition management into one member experience."
 description: "I led design strategy for Homebase for Health (HB4H), expanding Virgin Pulse beyond wellness into condition management, benefits navigation, and health analytics. A shared modular system helped our teams deliver these services as one experience."
 client: 'Virgin Pulse'
-role: 'Director, Product Design & Research'
-roleSummary: 'Led a multidisciplinary organization of 20+ designers, researchers, and data scientists, including managers.'
+role: 'Director of Product Design & Research'
+roleSummary: 'Led a multidisciplinary team of 20+ designers, researchers, data scientists, and a design engineer.'
 roleActivities:
   - Design strategy
   - Product vision
@@ -30,7 +30,7 @@ highlightChip: '200+ members researched'
 
 ### One platform, many offerings
 
-Employers needed to choose the services available to their workforce. Members needed to find relevant care, benefits, and daily tasks without understanding how those services were organized behind the scenes.
+Employers need to choose the services available to their workforce. Members needed to find relevant care, benefits, and daily tasks without understanding how those services were organized behind the scenes.
 
 The challenge was to support different employer configurations while giving every member a coherent, familiar experience.
 
@@ -38,14 +38,16 @@ The challenge was to support different employer configurations while giving ever
 
 ### Bringing teams together around a shared strategy
 
-As Director, Product Design & Research, I led a multidisciplinary organization of designers, researchers, and data scientists, including managers.
+As Director of Product Design & Research, I led a multidisciplinary team of 20+ designers, researchers, data scientists, and a design engineer.
 
-To support a growing platform, I introduced a modular design strategy and integrated it into our design system. I secured funding for a dedicated design systems team and hired a frontend engineer to bridge design and engineering, helping ensure shared patterns could be implemented consistently across products.
+To support a growing platform with increasingly diverse employer needs, I introduced a modular design strategy that shifted our approach from designing individual pages to building reusable, configurable experiences.
 
-This approach improved collaboration and reduced duplicated effort across teams.
+I embedded the framework into our design system and established a dedicated design system squad with a product manager and design engineer to drive adoption and ensure the approach could scale across product teams.
+
+Together, these changes helped teams work more consistently and confidently across different configurations, contributing to a 40% reduction in time to market.
 
 <ul class="metrics">
-  <li><span class="metrics__value">20+</span> <span class="metrics__label">Designers, researchers, and data scientists led</span></li>
+  <li><span class="metrics__value">20+</span> <span class="metrics__label">Multidisciplinary team members led</span></li>
   <li><span class="metrics__value">40%</span> <span class="metrics__label">Reduction in time to market</span></li>
 </ul>
 
@@ -53,9 +55,9 @@ This approach improved collaboration and reduced duplicated effort across teams.
 
 ### Design for configuration, not pages
 
-**Start with the member experience.** Research with more than 200 members, alongside interviews with stakeholders, helped us distinguish the needs of individual members from the configuration requirements of employer clients.
+**Start with the member experience**. Research with more than 200 members, alongside stakeholder interviews, helped us distinguish individual member needs from employer configuration requirements.
 
-**Create a flexible system.** Rather than designing separate experiences for each employer offering, we developed a modular strategy that allowed the platform to adapt to different configurations while maintaining a consistent experience.
+**Create a flexible system.** Rather than designing separate experiences for every employer offering, we applied the modular strategy to allow the platform to adapt to different configurations while maintaining a consistent experience.
 
 **Validate the interaction model.** We explored multiple concepts for navigation, daily tasks, and company announcements, testing the underlying structure before refining individual features.
 
@@ -67,17 +69,17 @@ This approach improved collaboration and reduced duplicated effort across teams.
 
 ### A configurable platform that holds together
 
-**A highly configurable platform** — Launched with support for Virgin Pulse’s expanded offerings while maintaining a consistent and engaging user experience.
+**A highly configurable platform.** Launched with support for Virgin Pulse’s expanded offerings while maintaining a consistent and engaging member experience.
 
-**A scalable modular system** — The modular design strategy streamlined client onboarding and allowed for rapid customization without breaking the design.
+**A scalable modular system.** The shared design strategy streamlined client onboarding and allowed for rapid customization without fragmenting the experience.
 
-**A cohesive front door** — Connected users to the full range of HB4H services, and kept them on track with rewardable tasks available to complete.
+**A cohesive front door.** Connected users to the full range of HB4H services and kept them on track with relevant activities.
 
 ![The Homebase for Health front-door experience across desktop and mobile, with daily actions, rewards, and personalized content](../../assets/work/vp/VP-HB4H.png)
 
 A dedicated team maintained the shared patterns so product teams could build on existing work as the range of health and wellbeing services grew.
 
-## Service design blueprint
+## Service Design Blueprint
 
 ### Health Continuum: connecting experiences through data
 
