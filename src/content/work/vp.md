@@ -38,7 +38,7 @@ Two challenges emerged: how to create a seamless and flexible user experience fo
 
 ### Bringing teams together around a shared strategy
 
-As Director of Product Design & Research, I led a multidisciplinary organization of designers, researchers, and data scientists, including managers.
+As Director, Product Design & Research, I led a multidisciplinary organization of designers, researchers, and data scientists, including managers.
 
 To support a growing platform, I introduced a modular design strategy and integrated it into our design system. I secured funding for a dedicated design systems team and hired a frontend engineer to bridge design and engineering, helping ensure shared patterns could be implemented consistently across products.
 

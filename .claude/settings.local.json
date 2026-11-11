@@ -5,7 +5,9 @@
       "Bash(curl:*)",
       "Bash(rm:*)",
       "Bash(npm run *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(git checkout *)",
+      "Bash(sed -i '' 's/eyebrow=\"Agentic AI & UX Strategy\"/eyebrow=\"Digital Experience \\\\& Product Design Leader\"/' src/pages/index.astro)"
     ]
   }
 }
