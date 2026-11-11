@@ -7,7 +7,7 @@ export const SITE = {
   name: 'Deanna Glaze',
   title: 'Deanna Glaze — Product Design Leader',
   description:
-    'Product design leader specializing in UX research, design management, and AI strategy. I make complex things clear with words, systems, and AI strategy.',
+    'Product design leader bringing clarity to complex systems through research, strategy, and team leadership. Work across AI, connected products, health, and publishing.',
   url: 'https://deannaglaze.com',
   author: 'Deanna Glaze',
 } as const;
@@ -15,8 +15,8 @@ export const SITE = {
 export const NAV = [
   { label: 'Home', href: '/' },
   { label: 'Work', href: '/work' },
-  { label: 'Me', href: '/about' },
-  { label: 'Design Resources', href: '/designresources' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ] as const;
 
 export const SOCIAL = [

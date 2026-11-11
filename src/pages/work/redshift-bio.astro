@@ -12,7 +12,7 @@ const entry = {
     title:'An intuitive experience for complex science.',
     client:'Redshift Bio', category:'Life sciences',
     tagline:'Experience design for a life sciences platform and instrument.',
-    description:'Redshift has a life sciences platform and instruments that provide ultra-sensitive and precise measurements of molecular structures. Loft was tasked with providing an end-to-end experience, from creating a compact device with improved usability and a full-size touch screen. I led the experience design strategy, working with one other designer and a mechanical engineer to realize an intuitive experience.',
+    description:'Redshift Bio develops life sciences instruments that measure molecular structures with high sensitivity and precision. The design agency Loft.Design was tasked with creating a compact instrument and its touchscreen experience. I led experience design strategy, working with another designer and a mechanical engineer to make the instrument easier to use.',
     role:'Experience design lead', roleActivities:['User research','Design direction','UX & visual design'],
     skills:[], team:[], chips:[], order:6, draft:false, featured:false,
   }
@@ -25,12 +25,12 @@ const entry = {
   <h2>The experience</h2>
   <figure><img src="/api/redshift/experience.jpg" alt="Redshift Bio user experience flows and touchscreen interface designs" loading="lazy"/></figure>
   <form class="lock-form" method="post" action="/api/redshift/access"><input type="hidden" name="action" value="lock"/><button type="submit">Lock this case study</button></form>
-</CaseStudyLayout> : <CaseStudyLayout entry={{...entry, data:{...entry.data, title:"Redshift Bio.", category:"Password protected", tagline:"A password-protected case study.", description:"This case study is shared privately. Enter the password to explore the work."}}} noindex hideRole hideNext pageTitle="Redshift Bio — Deanna Glaze">
+</CaseStudyLayout> : <CaseStudyLayout entry={{...entry, data:{...entry.data, title:"Redshift Bio", category:"Password protected", tagline:"A password-protected case study.", description:"This case study is shared privately. Enter the password to explore the work."}}} noindex hideRole hideNext pageTitle="Redshift Bio — Deanna Glaze">
   {available ? <form class="unlock-form" method="post" action="/api/redshift/access">
     <label for="case-password">Case study password</label>
     <input id="case-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby={error ? 'password-error' : undefined}/>
     {error && <p id="password-error" role="alert">That password didn’t match. Please try again.</p>}
-    <button class="button" type="submit">View case study <span aria-hidden="true">↗</span></button>
+    <button class="button" type="submit">View case study <span aria-hidden="true">→</span></button>
   </form> : <p>Private access is being set up. Please check back shortly.</p>}
   <p class="request-access">Need access? <a href="/contact">Let’s connect.</a></p>
 </CaseStudyLayout>}

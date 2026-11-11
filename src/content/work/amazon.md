@@ -24,7 +24,7 @@ KEP supported only digital books, forcing publishers to use separate tools for p
 
 **Design sprint leadership.** Facilitated a three-day cross-functional sprint to map the end-to-end publisher journey from title creation through troubleshooting.
 
-**User research.** Conducted direct publisher interviews identifying key pain points. Synthesized findings into two core themes: "Show me what's wrong so I can quickly fix it" and "Make it easy for me to add and manage all title formats."
+**User research.** Conducted direct publisher interviews identifying key pain points. Synthesized findings into two core themes: "Show me what’s wrong so I can quickly fix it" and "Make it easy for me to add and manage all title formats."
 
 **Ideation & prototyping.** Sketched concepts and storyboarded solutions, prioritizing a centralized dashboard with contextual recommendations. Designed wireframes focusing on:
 

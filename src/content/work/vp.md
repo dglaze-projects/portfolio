@@ -1,7 +1,7 @@
 ---
-title: 'Modular, scalable platform strategy'
-tagline: "Transforming Virgin Pulse's B2B2C wellness platform into a comprehensive, configurable health management solution. Modular architecture, a FHIR-based data model, and third-party integrations."
-description: "Virgin Pulse's Homebase for Health (HB4H) initiative aimed to transform its B2B2C wellness platform into a comprehensive health management solution spanning Wellness, Condition Management, Benefits Navigation, and Health Analytics. I directed the design strategy that made one platform work for all of it."
+title: 'One health platform, configured around different needs'
+tagline: "A configurable health platform that brings wellness, benefits, and condition management into one member experience."
+description: "I led design strategy for Homebase for Health (HB4H), expanding Virgin Pulse beyond wellness into condition management, benefits navigation, and health analytics. A shared modular system helped our teams deliver these services as one experience."
 client: 'Virgin Pulse'
 role: 'Director, Product Design & Research'
 roleSummary: 'Led a multidisciplinary organization of 20+ designers, researchers, and data scientists, including managers.'
@@ -30,9 +30,9 @@ highlightChip: '200+ members researched'
 
 ### One platform, many offerings
 
-Virgin Pulse's Homebase for Health (HB4H) initiative aimed to transform its B2B2C wellness platform into a comprehensive health management solution. The expanded offering included Wellness, Condition Management, Benefits Navigation, and Health Analytics.
+Employers needed to choose the services available to their workforce. Members needed to find relevant care, benefits, and daily tasks without understanding how those services were organized behind the scenes.
 
-Two challenges emerged: how to create a seamless and flexible user experience for diverse offerings while retaining user engagement and usability, and how to allow clients (employers) to configure their instance of the platform to their needs while maintaining design cohesion.
+The challenge was to support different employer configurations while giving every member a coherent, familiar experience.
 
 ## Leadership
 
@@ -42,7 +42,7 @@ As Director, Product Design & Research, I led a multidisciplinary organization o
 
 To support a growing platform, I introduced a modular design strategy and integrated it into our design system. I secured funding for a dedicated design systems team and hired a frontend engineer to bridge design and engineering, helping ensure shared patterns could be implemented consistently across products.
 
-This approach improved collaboration, reduced duplicated effort, and contributed to a 40% reduction in time to market.
+This approach improved collaboration and reduced duplicated effort across teams.
 
 <ul class="metrics">
   <li><span class="metrics__value">20+</span> <span class="metrics__label">Designers, researchers, and data scientists led</span></li>
@@ -53,7 +53,7 @@ This approach improved collaboration, reduced duplicated effort, and contributed
 
 ### Design for configuration, not pages
 
-**Start with the member experience.** Research with more than 200 members and stakeholder interviews helped us distinguish the needs of individual members from the configuration requirements of employer clients.
+**Start with the member experience.** Research with more than 200 members, alongside interviews with stakeholders, helped us distinguish the needs of individual members from the configuration requirements of employer clients.
 
 **Create a flexible system.** Rather than designing separate experiences for each employer offering, we developed a modular strategy that allowed the platform to adapt to different configurations while maintaining a consistent experience.
 
@@ -67,7 +67,7 @@ This approach improved collaboration, reduced duplicated effort, and contributed
 
 ### A configurable platform that holds together
 
-**A highly configurable platform** — Launched with support for Virgin Pulse's expanded offerings while maintaining a consistent and engaging user experience.
+**A highly configurable platform** — Launched with support for Virgin Pulse’s expanded offerings while maintaining a consistent and engaging user experience.
 
 **A scalable modular system** — The modular design strategy streamlined client onboarding and allowed for rapid customization without breaking the design.
 
@@ -75,7 +75,7 @@ This approach improved collaboration, reduced duplicated effort, and contributed
 
 ![The Homebase for Health front-door experience across desktop and mobile, with daily actions, rewards, and personalized content](../../assets/work/vp/VP-HB4H.png)
 
-By making modular design part of our shared design system and establishing a dedicated team to maintain it, we created a more consistent, scalable approach to product development. This contributed to a 40% reduction in time to market while supporting the platform's expanding range of health and wellbeing services.
+A dedicated team maintained the shared patterns so product teams could build on existing work as the range of health and wellbeing services grew.
 
 ## Service design blueprint
 
@@ -85,6 +85,6 @@ As Virgin Pulse expanded beyond wellness into health and condition management, w
 
 Engineering was working through how to architect a data model that could map health information using FHIR. A Product Director asked me to help clarify the requirements from a member experience perspective.
 
-I created a service design blueprint mapping the member journey, the information needed at each stage, and the relationships between data and experiences. This gave engineering a shared view of the requirements and helped inform the platform's data architecture.
+I created a service design blueprint mapping the member journey, the information needed at each stage, and the relationships between data and experiences. This gave engineering a shared view of the requirements and helped inform the platform’s data architecture.
 
 ![Health Continuum service design blueprint: member and client journeys mapped against backstage systems, actors, and FHIR health data types](../../assets/work/vp/VP-Health-Continuum-PCDM-Blueprint-1.jpg)
