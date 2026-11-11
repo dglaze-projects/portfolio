@@ -13,7 +13,7 @@ skills:
   - Content strategy
   - Creative direction
   - Strategic facilitation
-order: 3
+order: 4
 draft: false
 cover: ../../assets/work/loft/Loft-collage.png
 coverAlt: 'Pages from the rebranded Loft.Design site: case studies, insights posts, and the homepage sharing one design language'

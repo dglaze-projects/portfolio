@@ -17,7 +17,7 @@ team:
   - 1 product manager
   - 5 engineers
   - 1 technical account manager
-order: 4
+order: 3
 draft: false
 cover: ../../assets/work/amazon-convergence/kindle-conv-Dashboard.jpg
 coverAlt: 'Side-by-side comparison of the redesigned Publish to Kindle dashboard and the legacy Vendor Central experience'
