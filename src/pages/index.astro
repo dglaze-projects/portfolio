@@ -3,15 +3,20 @@ import PageHead from '../components/PageHead.astro';
 import PortfolioHeader from '../components/PortfolioHeader.astro';
 import PortfolioFooter from '../components/PortfolioFooter.astro';
 import '@fontsource-variable/inter';
+import CaseStudyScreens from '../components/CaseStudyScreens.astro';
+import fluidDashboard from '../assets/work/fluidlogic/dashboard.png';
+import fluidHistory from '../assets/work/fluidlogic/activity-history.svg';
+import fluidActivity from '../assets/work/fluidlogic/activity-detail.png';
+const fluidScreens = [{src:fluidDashboard,alt:'FluidLogic dashboard with an activity plan and device sync confirmation'},{src:fluidHistory,alt:'FluidLogic activity history'},{src:fluidActivity,alt:'FluidLogic individual activity details'}];
 const projects = [
  {id:'lotic',client:'Lotic',category:'Human-centered AI',role:'Product & Design Lead',href:'/work/lotic',title:'Making AI feel more human.',body:'I shaped a conversational wellbeing experience around trust, choice, and learning—taking the product from concept to a shipped MVP in 90 days.',evidence:'27% increase in prompt completion over the Alpha',aside:'The important part? Giving people a choice in how they share. That is where trust starts.',imageAlt:'Lotic wellbeing app screens showing prompts, personal insights, and financial wellbeing'},
- {id:'vp',client:'Virgin Pulse',category:'Platform strategy',role:'Director, Product Design & Research',href:'/work/vp',title:'One platform. Many needs.',body:'I brought research, teams, and modular design together to shape a configurable health platform.',evidence:'20+ designers, researchers, and data scientists led',aside:'Connecting the teams mattered as much as connecting the experience.',imageAlt:'Virgin Pulse Homebase for Health dashboard with benefits actions and a personalized welcome'},
+ {id:'fluidlogic',client:'FluidLogic',category:'Connected products',role:'Product strategy & design direction',href:'/work/fluidlogic',title:'Connected hydration. Focused on the activity.',body:'I connected product strategy, app design, and the marketing experience to help people prepare their hydration plan, use the device, and review their activity.',evidence:'Launched in 2025',aside:'The app sets the plan. The device takes it from there, so people can stay focused on the activity.',imageAlt:'FluidLogic app designs showing the dashboard, activity history, and post-activity details'},
  {id:'amazon',client:'Amazon',category:'Publishing systems',role:'Lead UX Designer',href:'/work/amazon-convergence',title:'Three publishing tools. One coherent experience.',body:'I led research and information architecture to unify fragmented tools around how publishers work—and challenged where preserving features would preserve friction.',evidence:'Three platforms brought into one publishing experience',aside:'Deanna likes finding the underlying knot. Here, that meant questioning which problems were worth carrying forward.',imageAlt:'Amazon book publishing interface showing a unified title detail page'},
 ];
 ---
 <!doctype html>
 <html lang="en">
-<PageHead title="Deanna Glaze — Product Design Leader" description="Meet Deanna Glaze through her work in publishing, health platforms, and human-centered AI." />
+<PageHead title="Deanna Glaze — Product Design Leader" description="Meet Deanna Glaze through her work in publishing, connected products, and human-centered AI." />
 <body>
 <a class="skip" href="#work">Skip to selected work</a>
 <div class="page">
@@ -21,13 +26,13 @@ const projects = [
 <section id="work" aria-label="Selected work">
 <div class="section-heading"><span>Selected work</span></div><div class="projects">
 {projects.map(p=><article class:list={['project',{'selected':p.id==='lotic'}]} data-project={p.id}>
-<button class="preview" aria-label={`Preview ${p.client} case study`} aria-expanded={p.id==='lotic'?'true':'false'} aria-controls={`abstract-${p.id}`} data-select={p.id}><span class="art-crop"><img src={`/images/exploration/projects/${p.id}-thumb.webp`} width="192" height="174" alt=""/></span><span class="preview-label">Quick look</span></button>
+<button class="preview" aria-label={`Preview ${p.client} case study`} aria-expanded={p.id==='lotic'?'true':'false'} aria-controls={`abstract-${p.id}`} data-select={p.id}><span class="art-crop"><img src={p.id==='fluidlogic'?fluidDashboard.src:`/images/exploration/projects/${p.id}-thumb.webp`} width="192" height="174" alt=""/></span><span class="preview-label">Quick look</span></button>
 <h2><button data-select={p.id} aria-controls={`abstract-${p.id}`}>{p.client}</button></h2><p class="category">{p.category}</p><p class="role">{p.role}</p><a class="direct" href={p.href}>Full case study <span aria-hidden="true">↗</span></a>
 </article>)}
 </div>
 <div class="presentation" aria-live="polite" aria-atomic="false">
 {projects.map(p=><section id={`abstract-${p.id}`} class="abstract" hidden={p.id!=='lotic'} aria-labelledby={`title-${p.id}`}>
-<div class="screen"><div class="copy"><p class="eyebrow">{p.client}</p><h2 id={`title-${p.id}`}>{p.title}</h2><p class="summary">{p.body}</p><a class="cta" href={p.href}>Read full case study <span aria-hidden="true">↗</span></a></div><div class="case-evidence"><img class="feature-image" src={`/images/exploration/projects/${p.id}-feature.webp`} width="852" height="426" alt={p.imageAlt}/><div class="outcome"><p class="metric">{p.id==='lotic'?'27%':p.id==='vp'?'20+':'3'}</p><p>{p.id==='lotic'?'increase in prompt completion over the Alpha':p.id==='vp'?'designers, researchers, and data scientists led':'publishing platforms brought into one experience'}</p></div></div></div>
+<div class="screen"><div class="copy"><p class="eyebrow">{p.client}</p><h2 id={`title-${p.id}`}>{p.title}</h2><p class="summary">{p.body}</p><a class="cta" href={p.href}>Read full case study <span aria-hidden="true">↗</span></a></div><div class="case-evidence">{p.id==='fluidlogic'?<div class="fluid-feature"><CaseStudyScreens screens={fluidScreens} compact/></div>:<img class="feature-image" src={`/images/exploration/projects/${p.id}-feature.webp`} width="852" height="426" alt={p.imageAlt}/>}<div class="outcome"><p class="metric">{p.id==='lotic'?'27%':p.id==='fluidlogic'?'2025':'3'}</p><p>{p.id==='lotic'?'increase in prompt completion over the Alpha':p.id==='fluidlogic'?'product launch across app and device':'publishing platforms brought into one experience'}</p></div></div></div>
 <aside class="host"><div class="monkey-crop"><img src="/images/exploration/monkeyshine-wayfarer.png" alt="Monkeyshine wearing Wayfarer-style glasses"/></div><div><p class="reflection">{p.aside}</p></div></aside>
 </section>)}
 </div>
@@ -54,4 +59,5 @@ selectors.forEach(button=>button.addEventListener('click',()=>selectProject(butt
 @media(max-width:760px){body{padding-bottom:0}.page{padding:0 22px}header{height:76px}nav{gap:20px}.wordmark{font-size:18px}.intro{padding:30px 0}h1{font-size:34px;line-height:1.35;letter-spacing:-.015em}.desktop-break{display:none}.intro p{font-size:16px}#work{display:flex;flex-direction:column;gap:18px}.section-heading{width:100%}.project{height:112px}.screen{flex-direction:column;align-items:stretch;padding:24px}.case-evidence{width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:18px}.outcome{padding-top:10px}.host{padding:0;gap:12px}.reflection{font-size:16px;line-height:1.65}footer{position:static;transform:none;width:100%;margin-top:24px;height:48px}.direct{font-size:12px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 h1,h2,h3{text-wrap:balance}
+.fluid-feature .case-screens{margin-bottom:0}
 </style></body></html>
